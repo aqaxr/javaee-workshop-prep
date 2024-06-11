@@ -2,6 +2,9 @@ package com.dedalus.model;
 
 import javax.persistence.*;
 
+/**
+ * New Table for animals
+ */
 
 @Entity
 @Table(name = "animals")
