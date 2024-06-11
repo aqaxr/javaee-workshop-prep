@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "animals")
+//Some Dummy commit
 public class AnimalEntity {
     @Id
     @GeneratedValue
