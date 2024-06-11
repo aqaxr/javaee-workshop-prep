@@ -3,3 +3,6 @@
 -- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-1');
 -- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-2');
 -- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-3');
+insert into animals (id,name,comment,animal_type,available) values(nextval('hibernate_sequence'), 'Dog', 'A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, and a barking, howling, or whining voice.', 'DOGGY_DOG',true);
+insert into animals (id,name,comment,animal_type,available) values(nextval('hibernate_sequence'), 'Cat', 'A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, and a barking, howling, or whining voice.', 'CITTY_CAT',false);
+insert into animals (id,name,comment,animal_type,available) values(nextval('hibernate_sequence'), 'DropBear', 'Australian bear that drops from trees and slays people', 'DROPBEAR',true);
