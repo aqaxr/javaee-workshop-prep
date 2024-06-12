@@ -8,6 +8,7 @@ import com.dedalus.persistence.AnimalRepository;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -48,7 +49,7 @@ public class AnimalResource {
 
     @POST
     @Transactional
-    public AnimalEntity save(AnimalEntity entity) {
+    public AnimalEntity save(@Valid AnimalEntity entity) {
         return this.repository.save(entity);
     }
 }
