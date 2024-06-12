@@ -31,6 +31,7 @@ public class AnimalAdoptionService {
             throw new PetUnavailableException(petID);
         }
         holder.getAdoptedPets().add(pet);
+        em.merge(holder);
         return getThanksMessage(holder, pet.getName());
     }
 
