@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -20,7 +21,19 @@ public class PetHolderEntity {
     private String firstName;
     private String adress;
 
-    @OneToMany
-    private Collection<AnimalEntity> adoptedPets;
+
+    @OneToMany(mappedBy = "petHolder")
+//    @LazyCollection(LazyCollectionOption.FALSE)
+    private Collection<AnimalEntity> adoptedPets = new ArrayList<AnimalEntity>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if(!(o instanceof PetHolderEntity)) return false;
+        PetHolderEntity that = (PetHolderEntity) o;
+        return (id.equals(that.id));
+    }
+
+
 
 }
