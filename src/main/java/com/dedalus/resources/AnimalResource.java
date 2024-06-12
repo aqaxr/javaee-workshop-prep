@@ -8,10 +8,7 @@ import com.dedalus.persistence.AnimalRepository;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -36,6 +33,14 @@ public class AnimalResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public List<AvailableAnimalDTO> findAvailable() {return this.availableAnimalMapper.map(this.repository.findAvailable());}
+
+    @Path("{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public AnimalEntity findById(@PathParam("id") Long id) {
+        return this.repository.findById(id);
+    }
 
     @POST
     @Transactional
