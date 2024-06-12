@@ -8,10 +8,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "animals")
+//Some Dummy commit
 public class AnimalEntity {
     @Id
     @GeneratedValue
-    public Long id;
+    private Long id;
 
     private String name;
 
