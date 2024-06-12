@@ -39,7 +39,11 @@ public class AnimalResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public AnimalEntity findById(@PathParam("id") Long id) {
-        return this.repository.findById(id);
+        AnimalEntity animal = this.repository.findById(id);
+        if (animal == null) {
+            throw new NotFoundException("The animal " + id + " does not exist");
+        }
+        return animal;
     }
 
     @POST

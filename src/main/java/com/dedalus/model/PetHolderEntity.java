@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 
 @Entity
@@ -14,7 +15,7 @@ public class PetHolderEntity {
     @Id
     @GeneratedValue
     private Long id;
-
+    @NotBlank
     private String name;
     private String firstName;
     private String adress;

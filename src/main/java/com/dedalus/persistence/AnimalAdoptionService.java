@@ -1,5 +1,6 @@
 package com.dedalus.persistence;
 
+import com.dedalus.exception.PetUnavailableException;
 import com.dedalus.model.AnimalEntity;
 import com.dedalus.model.PetHolderEntity;
 import lombok.NonNull;
@@ -8,6 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import javax.ws.rs.NotFoundException;
 
 @ApplicationScoped
 public class AnimalAdoptionService {
@@ -16,10 +18,18 @@ public class AnimalAdoptionService {
     EntityManager em;
 
     @Transactional
-    public String adoptAnimal(Long holderID, Long petID){
+    public String adoptAnimal(Long holderID, Long petID) {
         PetHolderEntity holder = em.find(PetHolderEntity.class, holderID);
+        if (holder == null) {
+            throw new NotFoundException("The pet holder "+holderID+" does not exist");
+        }
         AnimalEntity pet = em.find(AnimalEntity.class, petID);
-
+        if (pet == null) {
+            throw new NotFoundException("The animal " + petID + " does not exist");
+        }
+        if (!pet.isAvailable()) {
+            throw new PetUnavailableException(petID);
+        }
         holder.getAdoptedPets().add(pet);
         return getThanksMessage(holder, pet.getName());
     }
