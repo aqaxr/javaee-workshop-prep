@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class AnimalEntity {
     @Id
     @GeneratedValue
-    public Long id;
+    private Long id;
 
     private String name;
 
