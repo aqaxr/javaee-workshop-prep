@@ -30,7 +30,7 @@ public class AnimalEntity {
     private String comment;
     private boolean available = true;
 
-//    @XmlTransient
+    @XmlTransient
     @ManyToOne
     @JoinColumn(name = "PET_HOLDER_ID", referencedColumnName="id", table="animals")
     private PetHolderEntity petHolder;

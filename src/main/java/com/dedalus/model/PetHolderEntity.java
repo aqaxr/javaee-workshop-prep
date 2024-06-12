@@ -2,15 +2,10 @@ package com.dedalus.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 @Entity
 @Table(name = "petholder")
@@ -26,8 +21,7 @@ public class PetHolderEntity {
     private String adress;
 
 
-    @OneToMany(mappedBy = "petholder")
-
+    @OneToMany(mappedBy = "petHolder")
 //    @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<AnimalEntity> adoptedPets = new ArrayList<AnimalEntity>();
 
