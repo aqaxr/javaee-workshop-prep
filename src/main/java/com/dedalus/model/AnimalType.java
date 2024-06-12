@@ -4,5 +4,6 @@ public enum AnimalType {
     CITTY_CAT,
     DROPBEAR,
     DOGGY_DOG,
-    RABBY_RABBIT
+    RABBY_RABBIT,
+    WALRUS
 }

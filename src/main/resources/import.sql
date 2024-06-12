@@ -6,3 +6,6 @@
 insert into animals (id,name,comment,animal_type,available) values(nextval('hibernate_sequence'), 'Dog', 'A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, and a barking, howling, or whining voice.', 'DOGGY_DOG',true);
 insert into animals (id,name,comment,animal_type,available) values(nextval('hibernate_sequence'), 'Cat', 'A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, and a barking, howling, or whining voice.', 'CITTY_CAT',false);
 insert into animals (id,name,comment,animal_type,available) values(nextval('hibernate_sequence'), 'DropBear', 'Australian bear that drops from trees and slays people', 'DROPBEAR',true);
+insert into animals (id,name,comment,animal_type,available) values(nextval('hibernate_sequence'), 'Rupert', 'Markus favorite animal, that drinks daily its coffee with him', 'WALRUS',true);
+
+insert into petholders(id, name, firstname, address) values (nextval('hibernate_sequence'), 'Markus', 'Lehr-Unger', 'Hinterm Mond, rechts');
