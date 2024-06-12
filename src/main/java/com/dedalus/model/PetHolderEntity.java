@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-@Table(name = "petholder")
+@Table(name = "petholders")
 @Getter
 @Setter
 public class PetHolderEntity {
@@ -19,7 +19,7 @@ public class PetHolderEntity {
     @NotBlank
     private String name;
     private String firstName;
-    private String adress;
+    private String address;
 
 
     @OneToMany(mappedBy = "petHolder")
