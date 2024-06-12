@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * New Table for animals
@@ -28,4 +29,9 @@ public class AnimalEntity {
 
     private String comment;
     private boolean available = true;
+
+//    @XmlTransient
+    @ManyToOne
+    @JoinColumn(name = "PET_HOLDER_ID", referencedColumnName="id", table="animals")
+    private PetHolderEntity petHolder;
 }
