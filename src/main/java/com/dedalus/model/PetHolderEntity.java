@@ -2,6 +2,7 @@ package com.dedalus.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,6 +13,7 @@ import java.util.Collection;
 @Table(name = "petholders")
 @Getter
 @Setter
+@ToString
 public class PetHolderEntity {
     @Id
     @GeneratedValue
@@ -23,7 +25,6 @@ public class PetHolderEntity {
 
 
     @OneToMany(mappedBy = "petHolder")
-//    @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<AnimalEntity> adoptedPets = new ArrayList<AnimalEntity>();
 
     @Override
@@ -34,6 +35,9 @@ public class PetHolderEntity {
         return (id.equals(that.id));
     }
 
-
+    @Override
+        public int hashCode() {
+            return id.hashCode();
+    }
 
 }

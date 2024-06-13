@@ -22,7 +22,7 @@ public class AnimalRepository {
     }
 
     public List<AnimalEntity> findAvailable() {
-        return em.createQuery("SELECT a FROM AnimalEntity a WHERE a.available = true", AnimalEntity.class).getResultList();
+        return em.createQuery("SELECT a FROM AnimalEntity a WHERE a.petHolder is NULL", AnimalEntity.class).getResultList();
     }
 
     public AnimalEntity findById(Long id) {
