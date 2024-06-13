@@ -8,4 +8,4 @@ insert into animals (id,name,comment,animal_type) values(nextval('hibernate_sequ
 insert into animals (id,name,comment,animal_type) values(nextval('hibernate_sequence'), 'DropBear', 'Australian bear that drops from trees and slays people', 'DROPBEAR');
 insert into animals (id,name,comment,animal_type) values(nextval('hibernate_sequence'), 'Rupert', 'Markus favorite animal, that drinks daily its coffee with him', 'WALRUS');
 
-insert into petholders(id, name, firstname, address) values (nextval('hibernate_sequence'), 'Lehr-Unger', 'Markus', 'Hinterm Mond, rechts');
+insert into petholders(id, name, firstname, address) values (1, 'Lehr-Unger', 'Markus', 'Hinterm Mond, rechts');

@@ -6,6 +6,7 @@ import com.dedalus.persistence.PetHolderRepository;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -21,6 +22,7 @@ public class PetHolderResource {
     AnimalAdoptionService adoptionService;
 
     @POST
+    @Transactional
     public PetHolderEntity insertNewHolder(PetHolderEntity holder){
         return repository.saveNewHolder(holder);
     }
