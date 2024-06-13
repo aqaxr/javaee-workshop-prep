@@ -6,6 +6,10 @@ import com.dedalus.model.AnimalDTO;
 import com.dedalus.model.AnimalEntity;
 import com.dedalus.model.AvailableAnimalDTO;
 import com.dedalus.persistence.AnimalRepository;
+import com.dedalus.restclient.ApiNinjaAnimalClient;
+import org.eclipse.microprofile.config.inject.ConfigProperties;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 import io.quarkus.cache.CacheInvalidate;
 import io.quarkus.cache.CacheResult;
 

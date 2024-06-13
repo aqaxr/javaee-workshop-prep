@@ -47,6 +47,7 @@ public class PetHolderResource {
     public String adoptHolder(
                          @PathParam("holderID") Long holderID ,
                          @PathParam("animalID") Long animalID    ){
+        
        return adoptionService.adoptAnimal(holderID, animalID);
 
     }
