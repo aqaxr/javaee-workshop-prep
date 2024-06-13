@@ -9,3 +9,7 @@ insert into animals (id,name,comment,animal_type) values(nextval('hibernate_sequ
 insert into animals (id,name,comment,animal_type) values(nextval('hibernate_sequence'), 'Rupert', 'Markus favorite animal, that drinks daily its coffee with him', 'WALRUS');
 
 insert into petholders(id, name, firstname, address) values (1, 'Lehr-Unger', 'Markus', 'Hinterm Mond, rechts');
+
+insert into petholders(id, name, firstname, address) values (2, 'Bunnies', 'Daddy Of', 'Im Moehrchenfeld');
+insert into animals (id,name,comment,animal_type, PET_HOLDER_ID) values(nextval('hibernate_sequence'), 'Bugs Bunny', 'Der naechtliche Kuschelhase und ausserdem der Schnellste in Trier', 'RABBY_RABBIT', 2);
+
