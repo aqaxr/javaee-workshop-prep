@@ -1,6 +1,8 @@
 package com.dedalus.resources;
 
+import com.dedalus.mapper.AnimalDTOMapper;
 import com.dedalus.mapper.AvailableAnimalMapper;
+import com.dedalus.model.AnimalDTO;
 import com.dedalus.model.AnimalEntity;
 import com.dedalus.model.AvailableAnimalDTO;
 import com.dedalus.persistence.AnimalRepository;
@@ -22,11 +24,14 @@ public class AnimalResource {
     @Inject
     AvailableAnimalMapper availableAnimalMapper;
 
+    @Inject
+    AnimalDTOMapper animalDTOMapper;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
-    public List<AnimalEntity> findAll() {
-        return this.repository.findAll();
+    public List<AnimalDTO> findAll() {
+        return this.animalDTOMapper.map( this.repository.findAll());
     }
 
     @Path("available")
