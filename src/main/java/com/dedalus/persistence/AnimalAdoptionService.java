@@ -30,8 +30,9 @@ public class AnimalAdoptionService {
         if (!pet.isAvailable()) {
             throw new PetUnavailableException(petID);
         }
-        holder.getAdoptedPets().add(pet);
-        em.merge(holder);
+        pet.setPetHolder(holder);
+        em.persist(pet);
+        em.flush();
         return getThanksMessage(holder, pet.getName());
     }
 

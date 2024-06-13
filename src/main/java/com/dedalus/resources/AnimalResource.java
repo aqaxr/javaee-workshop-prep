@@ -61,4 +61,11 @@ public class AnimalResource {
     public AnimalEntity save(@Valid AnimalEntity entity) {
         return this.repository.save(entity);
     }
+
+    @Path("{id}/rename/{newName}")
+    @PUT
+    @Transactional
+    public AnimalDTO update(@PathParam("id") Long id, @PathParam("newName") String newName) {
+        return  animalDTOMapper.map( this.repository.rename(id, newName));
+    }
 }

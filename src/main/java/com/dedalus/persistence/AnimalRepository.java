@@ -1,10 +1,12 @@
 package com.dedalus.persistence;
 
+import com.dedalus.exception.ConflictException;
 import com.dedalus.model.AnimalEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.ws.rs.NotFoundException;
 import java.util.List;
 
 @ApplicationScoped
@@ -27,5 +29,18 @@ public class AnimalRepository {
 
     public AnimalEntity findById(Long id) {
         return em.find(AnimalEntity.class, id);
+    }
+
+    public AnimalEntity rename(Long id, String newName) {
+        AnimalEntity entity = em.find(AnimalEntity.class, id);
+        if (entity == null) {
+            throw new NotFoundException("Animal" + id + "not found");
+        }
+        if (entity.isAvailable()){
+            throw new ConflictException(id);
+        }
+        entity.setName(newName);
+        em.persist(entity);
+        return entity;
     }
 }
