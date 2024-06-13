@@ -21,8 +21,4 @@ class AnimalResourceIT  {
                 .body("$.size()", is(5));
     }
 
-//    @Test
-//    void testAnimalAdoption(){
-//
-//    }
 }
