@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "petholders")
@@ -34,12 +35,12 @@ public class PetHolderEntity {
         if (this == o) return true;
         if(!(o instanceof PetHolderEntity)) return false;
         PetHolderEntity that = (PetHolderEntity) o;
-        return (id.equals(that.id));
+        return (Objects.equals(this.id, that.id));
     }
 
     @Override
         public int hashCode() {
-            return id.hashCode();
+            return Objects.hashCode(id);
     }
 
 }

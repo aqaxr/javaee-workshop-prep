@@ -7,6 +7,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.Objects;
 
 /**
  * New Table for animals
@@ -45,11 +46,11 @@ public class AnimalEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AnimalEntity that = (AnimalEntity) o;
-        return this.id.equals(that.id);
+        return Objects.equals(that.id, this.id);
     }
 
     @Override
     public int hashCode() {
-        return this.id.hashCode();
+        return Objects.hashCode(id);
     }
 }
