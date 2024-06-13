@@ -32,7 +32,7 @@ public class AnimalEntity {
     private String comment;
 
     public boolean isAvailable(){
-        return petHolder != null;
+        return petHolder == null;
     }
 
     @XmlTransient
