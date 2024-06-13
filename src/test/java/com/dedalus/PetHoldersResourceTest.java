@@ -13,7 +13,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.startsWith;
 
 @QuarkusTest
