@@ -6,10 +6,8 @@ import com.dedalus.model.AnimalDTO;
 import com.dedalus.model.AnimalEntity;
 import com.dedalus.model.AvailableAnimalDTO;
 import com.dedalus.persistence.AnimalRepository;
-import com.dedalus.restclient.ApiNinjaAnimalClient;
-import org.eclipse.microprofile.config.inject.ConfigProperties;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
+import io.quarkus.cache.CacheInvalidate;
+import io.quarkus.cache.CacheResult;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -33,7 +31,7 @@ public class AnimalResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
+    @CacheResult(cacheName = "animals")
     public List<AnimalDTO> findAll() {
         return this.animalDTOMapper.map( this.repository.findAll());
     }
@@ -41,13 +39,12 @@ public class AnimalResource {
     @Path("available")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
+    @CacheResult(cacheName = "available-animals")
     public List<AvailableAnimalDTO> findAvailable() {return this.availableAnimalMapper.map(this.repository.findAvailable());}
 
     @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
     public AnimalEntity findById(@PathParam("id") Long id) {
         AnimalEntity animal = this.repository.findById(id);
         if (animal == null) {
@@ -58,6 +55,8 @@ public class AnimalResource {
 
     @POST
     @Transactional
+    @CacheInvalidate(cacheName="available-animals")
+    @CacheInvalidate(cacheName="animals")
     public AnimalEntity save(@Valid AnimalEntity entity) {
         return this.repository.save(entity);
     }
