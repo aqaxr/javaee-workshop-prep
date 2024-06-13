@@ -1,5 +1,7 @@
 package com.dedalus.resources;
 
+import com.dedalus.control.PetHolderService;
+import com.dedalus.model.PetHolderDTO;
 import com.dedalus.model.PetHolderEntity;
 import com.dedalus.persistence.AnimalAdoptionService;
 import com.dedalus.persistence.PetHolderRepository;
@@ -21,21 +23,21 @@ import java.util.List;
 public class PetHolderResource {
 
     @Inject
-    PetHolderRepository repository;
+    PetHolderService petHolderService;
 
     @Inject
     AnimalAdoptionService adoptionService;
 
     @POST
     @Transactional
-    public PetHolderEntity insertNewHolder(PetHolderEntity holder){
-        return repository.saveNewHolder(holder);
+    public PetHolderDTO insertNewHolder(PetHolderEntity holder){
+        return petHolderService.saveNewHolder(holder);
     }
 
     @GET
     @CacheResult(cacheName = "pet-holder")
-    public List<PetHolderEntity> getAllHolders(){
-        return  repository.findAll();
+    public List<PetHolderDTO> getAllHolders(){
+        return  petHolderService.findAll();
     }
 
     @POST
