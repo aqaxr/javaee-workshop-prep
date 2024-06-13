@@ -36,6 +36,13 @@ public class AnimalAdoptionService {
     }
 
     private String getThanksMessage(@NonNull PetHolderEntity holder, @NonNull String petName){
+        if (petName.equals("Rupert") && holder.getId().equals(1L)){
+            return "Herzlichen Glückwunsch. \n" +
+                    "Markus hat sein heissgeliebtes Walross Rupert wiedergefunden. Alle freuen sich und die Sterne tanzen " +
+                    "um dieses freudiges Erlebnus mitzufeiern. Der Adoptionsservice hofft, dass in Zukunft keine Trennung " +
+                    "mehr erfolgt und wünscht alles Gute.";
+        }
+
         return String.format("Herzlichen Glückwunsch %s, \n" +
                 "Ihr neues Haustier %s zieht morgen bei Ihnen ein.\n" +
                 "Ihr AdoptionsService des Vertrauens",
