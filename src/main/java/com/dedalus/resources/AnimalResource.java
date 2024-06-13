@@ -45,12 +45,18 @@ public class AnimalResource {
     @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+<<<<<<< Updated upstream
     public AnimalEntity findById(@PathParam("id") Long id) {
+=======
+    @Transactional
+    public AnimalDTO findById(@PathParam("id") Long id) {
+>>>>>>> Stashed changes
         AnimalEntity animal = this.repository.findById(id);
+
         if (animal == null) {
             throw new NotFoundException("The animal " + id + " does not exist");
         }
-        return animal;
+        return this.animalDTOMapper.map(animal);
     }
 
     @POST
