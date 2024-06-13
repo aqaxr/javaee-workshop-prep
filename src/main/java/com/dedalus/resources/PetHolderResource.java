@@ -3,6 +3,9 @@ package com.dedalus.resources;
 import com.dedalus.model.PetHolderEntity;
 import com.dedalus.persistence.AnimalAdoptionService;
 import com.dedalus.persistence.PetHolderRepository;
+import io.quarkus.cache.CacheInvalidate;
+import io.quarkus.cache.CacheInvalidateAll;
+import io.quarkus.cache.CacheResult;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -30,12 +33,17 @@ public class PetHolderResource {
     }
 
     @GET
+    @CacheResult(cacheName = "pet-holder")
     public List<PetHolderEntity> getAllHolders(){
         return  repository.findAll();
     }
 
     @POST
     @Path("{holderID}/adopt/{animalID}")
+    @Transactional
+    @CacheInvalidateAll(cacheName = "pet-holder")
+    @CacheInvalidate(cacheName="available-animals")
+    @CacheInvalidate(cacheName="animals")
     public String adoptHolder(
                          @PathParam("holderID") Long holderID ,
                          @PathParam("animalID") Long animalID    ){
