@@ -9,4 +9,5 @@ public class AnimalDTO {
     private AnimalType animalType;
     private String comment;
     private String petHolderFullName;
+    private AnimalInfoDTO animalInfo;
 }
